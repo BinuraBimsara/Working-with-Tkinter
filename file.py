@@ -7,6 +7,9 @@ window.title("Test GUI")
 label = tk.Label(window, text = "Hello World!", font = ('Poppins',25))
 label.pack(padx=20 , pady=20)
 
+tk.Label(window, text = "Hello World!", font = ('Poppins',25)).pack(padx=20 , pady=20)
+
+
 frame = tk.Frame(window)
 
 # textbox = tk.Text(window, height=1, font = ('Poppins',16))
