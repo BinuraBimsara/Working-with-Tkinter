@@ -44,7 +44,7 @@ def addTask():
     taskduedate_entry.grid(row=3, column=1, padx=10, pady=10)
 
     def add():
-        name = taskname_entry.get()
+        name = taskname_entry.get().lower()
         desc = taskdesc_entry.get()
         priority = taskpriority_entry.get()
         due = taskduedate_entry.get()
@@ -88,7 +88,7 @@ def viewTask():
     viewtask_text = tk.Text(frame,width=45, height=8, font = (("Poppins)", 16)))
     viewtask_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
-    viewtask_btn = tk.Button(frame, text="View Task", width=20, font=('Poppins', 16), command=lambda: handle_view_task(taskname_entry.get(), viewtask_text))
+    viewtask_btn = tk.Button(frame, text="View Task", width=20, font=('Poppins', 16), command=lambda: handle_view_task(taskname_entry.get().lower(), viewtask_text))
     viewtask_btn.grid(row=2, column=1,padx=10, pady=10)  #Lambda is used to pass arguments.
 
     backtoMenu_btn = tk.Button(frame, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
@@ -124,7 +124,7 @@ def updateTask():
     updatetask_text = tk.Text(frame,width=45, height=8, font = (("Poppins)", 16)))
     updatetask_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
-    viewtask_btn = tk.Button(frame, text="Find Task", width=15, font=('Poppins', 9), command=lambda: handle_view_task(updatename_entry.get(), updatetask_text))
+    viewtask_btn = tk.Button(frame, text="Find Task", width=15, font=('Poppins', 9), command=lambda: handle_view_task(updatename_entry.get().lower(), updatetask_text))
     viewtask_btn.grid(row=2, column=1,padx=10, pady=10)  #Lambda is used to pass arguments.
 
     newtaskdescription_label = tk.Label(frame, text = "New task description : ", font = (("Poppins)", 16)))
@@ -142,7 +142,7 @@ def updateTask():
     newtaskduedate_entry = tk.Entry(frame, font = (("Poppins)", 16)))
     newtaskduedate_entry.grid(row=5, column=1, padx=10, pady=10)
 
-    update_btn = tk.Button(frame, text="Update", command=lambda: handle_update(updatename_entry.get(), newtaskdescription_entry.get(), newtaskpriority_entry.get(), newtaskduedate_entry.get()), width=20, font=('Poppins', 16))
+    update_btn = tk.Button(frame, text="Update", command=lambda: handle_update(updatename_entry.get().lower(), newtaskdescription_entry.get(), newtaskpriority_entry.get(), newtaskduedate_entry.get()), width=20, font=('Poppins', 16))
     update_btn.grid(row=6, column=1,padx=10, pady=10)
     backtoMenu_btn = tk.Button(frame, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     backtoMenu_btn.grid(row = 6, column=0,padx=10, pady=10)
@@ -177,7 +177,7 @@ def deleteTask():
     viewtask_text = tk.Text(frame,width=45, height=8, font = (("Poppins)", 16)))
     viewtask_text.grid(row=1, column=0, columnspan=2, padx=10, pady=10)
 
-    viewtask_btn = tk.Button(frame, text="Find Task", width=10, font=('Poppins', 9), command=lambda: handle_view_task(deletetaskname_entry.get(), viewtask_text))
+    viewtask_btn = tk.Button(frame, text="Find Task", width=10, font=('Poppins', 9), command=lambda: handle_view_task(deletetaskname_entry.get().lower(), viewtask_text))
     viewtask_btn.grid(row=2, column=1,padx=10, pady=10)  #Lambda is used to pass arguments.
 
     delete_btn = tk.Button(frame, text="Delete", command=lambda: handle_delete(deletetaskname_entry.get()), width=20, font=('Poppins', 16))
@@ -191,6 +191,7 @@ def deleteTask():
         del tasks[task_name]
         save_tasks()
         messagebox.showinfo("Success", "Task deleted successfully")
+        deleteTask()
 
 
 def main_menu():
@@ -230,4 +231,6 @@ window.mainloop()
 #     in add task, input should be cleared after clicking addTask
 
 #     in update task, when user click update without any input, its should display "All fields should be filled"
+
+#     Task name input capital or simple error ////DONE
 
