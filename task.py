@@ -4,7 +4,6 @@ window = tk.Tk()
 window.geometry("700x500")
 window.title("Stage 4")
 
-
 def addTask():
     clear_frame()
     window.geometry("700x500")
@@ -35,6 +34,8 @@ def addTask():
 
     frame.pack(padx=10, pady=10)
 
+    submit_btn = tk.Button(window, text="Submit", width=20, font=('Poppins', 16))
+    submit_btn.pack(pady=10)
     backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     backtoMenu_btn.pack(pady=10)
 
@@ -42,8 +43,20 @@ def viewTask():
     clear_frame()
     window.geometry("700x500")
     label = tk.Label(window, text="View a Task", font=('Poppins', 25))
-    backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     label.pack(pady=10)
+
+    frame = tk.Frame(window)
+    taskname_label = tk.Label(frame, text = "Task name : ", font = (("Poppins)", 16)))
+    taskname_label.grid(row=0, column=0, padx=10, pady=10)
+
+    taskname_entry = tk.Entry(frame, font = (("Poppins)", 16)))
+    taskname_entry.grid(row=0, column=1, padx=10, pady=10)
+    frame.pack()
+
+    viewtask_text = tk.Text(window, height=8, font = (("Poppins)", 16)))
+    viewtask_text.pack(padx=10, pady=10)
+
+    backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     backtoMenu_btn.pack(pady=10)
 
 
@@ -51,10 +64,17 @@ def updateTask():
     clear_frame()
     window.geometry("700x500")
     label = tk.Label(window, text="Update a Task", font=('Poppins', 25))
-    backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     label.pack(pady=10)
-    backtoMenu_btn.pack(pady=10)
 
+    frame = tk.Frame(window)
+    updatename_Label = tk.Label(frame, text="Task name : ", font = (("Poppins)", 16)))
+    updatename_Label.grid(row=0, column=0, padx=10, pady=10)
+    updatename_Entry = tk.Entry(frame, font = (("Poppins)", 16)))
+    updatename_Entry.grid(row=0, column=1, padx=10, pady=10)
+    frame.pack(padx=10, pady=10)
+
+    backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
+    backtoMenu_btn.pack(pady=10)
 
 def deleteTask():
     clear_frame()
@@ -63,12 +83,6 @@ def deleteTask():
     backtoMenu_btn = tk.Button(window, text = "Back to Menu",command=main_menu, width=20, font=('Poppins', 16))
     label.pack(pady=10)
     backtoMenu_btn.pack(pady=10)
-
-
-
-def clear_frame():
-    for widget in window.winfo_children():
-        widget.destroy()
 
 def main_menu():
     clear_frame()
@@ -86,6 +100,10 @@ def main_menu():
 
     deleteTask_btn = tk.Button(window, text = "Delete a Task",command=deleteTask, width=20, font=('Poppins', 16))
     deleteTask_btn.pack(pady=10)
+def clear_frame():
+    for widget in window.winfo_children():
+        widget.destroy()
+
 
 
 main_menu()

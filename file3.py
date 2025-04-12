@@ -25,6 +25,7 @@ def update():
     print("Update logic here")
 
 def delete():
+
     print("Delete logic here")
 
 # GUI handlers
